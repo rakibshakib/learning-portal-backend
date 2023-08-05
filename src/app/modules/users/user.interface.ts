@@ -8,6 +8,24 @@ export type userInterface = {
   name: string;
 };
 
+export type IAuthResponse = {
+  user: Omit<userInterface, "password">;
+  accessToken: string;
+};
+
+export type ILoginUser = {
+  email: string;
+  password: string;
+};
+
+export type ILoginUserResponse = {
+  user: Omit<userInterface, "password">;
+  accessToken: string;
+};
+
+export interface IUserInterfaceWithId extends userInterface {
+  _id: string;
+}
 // export type UserModel = Model<userInterface, Record<string, unknown>>;
 export type UserModel = {
   isUserExist(email: string): Promise<userInterface>;
