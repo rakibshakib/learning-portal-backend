@@ -3,12 +3,10 @@ import { VideoController } from "./video.controller";
 
 const route = express.Router();
 
-route.delete("/videos/:id", VideoController.deleteVideoById)
-route.get("/videos/:id", VideoController.getVideoById)
-route.get("/videos", VideoController.getAllVideos)
-route.post("/videos", VideoController.createVideos)
-route.patch("/videos", VideoController.updateVideos)
-
-
+route.get("/videos/:id", VideoController.getVideoById);
+route.get("/videos", VideoController.getAllVideos);
+route.delete("/videos/:id", VideoController.deleteVideoById);
+route.patch("/videos/:id", VideoController.updateVideos);
+route.post("/videos", VideoController.createVideos);
 
 export const VideoRoutes = route;
