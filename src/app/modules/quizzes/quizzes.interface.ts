@@ -1,6 +1,30 @@
 import { Model, Types } from "mongoose";
 import { IVideo } from "../videos/video.interface";
 
+type IOptions = {
+  id: number;
+  option: string;
+  isCorrect: boolean;
+};
+export type IQuizzes = {
+  question: string;
+  video_id: Types.ObjectId | IVideo;
+  options: IOptions[];
+};
+
+export type IModifyIQuizzes = {
+  id: string;
+  question: string;
+  video_id: string;
+  video_title: string;
+  options: IOptions[];
+};
+
+export type QuizzesModel = Model<IQuizzes, Record<string, unknown>>;
+
+/* 
+
+
 const quizeData = {
   id: 1693045362448,
   question: "Test Quizz",
@@ -76,23 +100,6 @@ const demo = [
     ],
   },
 ];
-type IOptions = {
-  id: number;
-  option: string;
-  isCorrect: boolean;
-};
-export type IQuizzes = {
-  question: string;
-  video_id: Types.ObjectId | IVideo;
-  options: IOptions[];
-};
 
-export type IModifyIQuizzes = {
-  id: string;
-  question: string;
-  video_id: string;
-  video_title: string;
-  options: IOptions[];
-};
 
-export type QuizzesModel = Model<IQuizzes, Record<string, unknown>>;
+*/
