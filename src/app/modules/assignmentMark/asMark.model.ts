@@ -10,7 +10,7 @@ export const assignmarksSchema = new Schema<IAssignmentMarks>(
     },
     student_name: {
       type: String,
-      required: true,
+      required: false,
     },
     assignment_id: {
       type: Schema.Types.ObjectId,
@@ -29,9 +29,14 @@ export const assignmarksSchema = new Schema<IAssignmentMarks>(
       type: Number,
       required: true,
     },
+    assingMarks: {
+      type: String,
+      required: false,
+    },
     repo_link: {
       type: String,
       required: true,
+      unique: true,
     },
     status: {
       type: String,

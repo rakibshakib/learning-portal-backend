@@ -33,13 +33,15 @@ const assign = {
 };
 
 export type IAssignmentMarks = {
+  id: string;
   student_id: Types.ObjectId | userInterface;
-  student_name: string;
+  student_name?: string;
   assignment_id: Types.ObjectId | IAssignement;
   title: string;
   totalMark: number;
   mark: number;
   repo_link: string;
+  assingMarks?: string;
   status: "pending" | "published";
 };
 
@@ -50,6 +52,18 @@ export type IAssignmentMarks = {
 //   video_title: string;
 //   options: IOptions[];
 // };
+
+export type IResponseAssignmentsMarks = {
+  student_id: string;
+  student_name: string;
+  assignment_id: string;
+  title: string;
+  totalMark: number;
+  mark: number;
+  repo_link: string;
+  status: string;
+  assingMarks: string;
+};
 
 export type AssignmentMarksModel = Model<
   IAssignmentMarks,

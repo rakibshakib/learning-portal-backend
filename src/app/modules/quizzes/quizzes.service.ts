@@ -2,7 +2,7 @@ import { IVideo } from "../videos/video.interface";
 import { IModifyIQuizzes, IQuizzes } from "./quizzes.interface";
 import { Quizzes } from "./quizzes.model";
 
-interface IVideoId extends IVideo {
+export interface IVideoId extends IVideo {
   id: string;
 }
 
