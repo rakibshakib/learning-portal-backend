@@ -77,9 +77,24 @@ const getAssignement: RequestHandler = async (
     res.status(responseData.statusCode).json(responseData);
   }
 };
+const getAssignmentById: RequestHandler = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  const { id } = req.params;
+  const update = await AssignmentService.getAssignmentById(id);
+  const responseData: IApiReponse<IAssignement> = {
+    statusCode: 200,
+    success: true,
+    message: "Assignement loaded successfully!",
+    data: update,
+  };
+  res.status(responseData.statusCode).json(responseData);
+};
 export const AssignmentController = {
   createAssignement,
   deleteAssignement,
   updateAssignement,
   getAssignement,
+  getAssignmentById,
 };

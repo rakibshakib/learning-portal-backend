@@ -3,6 +3,7 @@ import express from "express";
 
 const route = express.Router();
 
+route.get("/:id", AssignmentController.getAssignmentById);
 route.get("/", AssignmentController.getAssignement);
 route.delete("/:id", AssignmentController.deleteAssignement);
 route.patch("/:id", AssignmentController.updateAssignement);

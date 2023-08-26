@@ -32,6 +32,12 @@ const deleteAssignement = async (id: string): Promise<IAssignement | null> => {
   });
   return res;
 };
+const getAssignmentById = async (id: string): Promise<IAssignement | null> => {
+  const res = await Assignment.findOne({
+    _id: id,
+  });
+  return res;
+};
 const getAssignementByFilter = async (
   video_id?: string
 ): Promise<IModifyIAssignement | {}> => {
@@ -64,4 +70,5 @@ export const AssignmentService = {
   updateAssignement,
   getAssignementByFilter,
   getAllAssignement,
+  getAssignmentById,
 };
