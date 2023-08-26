@@ -16,6 +16,7 @@ const registerUser = async (
     newData.password = config.default_admin_pass as string;
   }
   newData.role = "student";
+  newData.isApproved = false;
   const newUser = await Users.create(newData);
   const { _id, role, email } = newUser;
   const accessToken = jwtHelpers.createToken(
@@ -53,7 +54,12 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     accessToken: accessToken,
   };
 };
+const getAllUsers = async (): Promise<userInterface[] | null> => {
+  const allUsers = await Users.find({});
+  return allUsers;
+};
 export const UserService = {
   registerUser,
   loginUser,
+  getAllUsers
 };

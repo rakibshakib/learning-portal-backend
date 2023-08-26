@@ -6,6 +6,7 @@ export type userInterface = {
   password: string;
   role: role;
   name: string;
+  isApproved: boolean
 };
 
 export type IAuthResponse = {

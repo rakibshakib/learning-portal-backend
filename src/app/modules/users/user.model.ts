@@ -26,6 +26,10 @@ const userSchema = new Schema<userInterface>(
       type: String,
       required: true,
     },
+    isApproved: {
+      type: Boolean,
+      required: true,
+    }
   },
   {
     timestamps: true,

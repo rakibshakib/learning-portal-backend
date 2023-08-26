@@ -58,7 +58,40 @@ const loginUser: RequestHandler = async (
 
   res.status(responseData.statusCode).json(responseData);
 };
+const getAllUsers: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  const users = await UserService.getAllUsers();
+  // console.log(result);
+  const responseData: IApiReponse<userInterface[]> = {
+    statusCode: 200,
+    success: true,
+    message: "All Users",
+    data: users,
+  };
+
+  res.status(responseData.statusCode).json(responseData);
+};
+const approvedUsers: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  // const users = await UserService.getAllUsers();
+  // // console.log(result);
+  // const responseData: IApiReponse<userInterface[]> = {
+  //   statusCode: 200,
+  //   success: true,
+  //   message: "All Users",
+  //   data: users,
+  // };
+  // res.status(responseData.statusCode).json(responseData);
+};
 export const UserController = {
   registerUser,
   loginUser,
+  getAllUsers,
+  approvedUsers,
 };
