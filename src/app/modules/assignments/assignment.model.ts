@@ -11,6 +11,7 @@ export const assignmentSchema = new Schema<IAssignement>(
     video_id: {
       type: Schema.Types.ObjectId,
       ref: "Videos",
+      required: true,
     },
     totalMark: {
       type: Number,
