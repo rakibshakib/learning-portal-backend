@@ -1,3 +1,7 @@
+import { Model, Types } from "mongoose";
+import { userInterface } from "../users/user.interface";
+import { IVideo } from "../videos/video.interface";
+
 // http://localhost:9000/quizMark
 const playQuiz = {
   id: 1693055408041,
@@ -25,3 +29,24 @@ const res = {
   totalMark: 10,
   mark: 10,
 };
+export type IQuizMarks = {
+  student_id: Types.ObjectId | userInterface;
+  video_id: Types.ObjectId | IVideo;
+  totalQuiz: number;
+  totalCorrect: number;
+  totalWrong: number;
+  totalMark: number;
+  mark: number;
+};
+export type IQuizMarksResponse = {
+  student_name: string;
+  video_title: string;
+  student_id: string;
+  video_id: string;
+  totalQuiz: number;
+  totalCorrect: number;
+  totalWrong: number;
+  totalMark: number;
+  mark: number;
+};
+export type QuizeMarkModel = Model<IQuizMarks, Record<string, unknown>>;

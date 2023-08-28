@@ -58,8 +58,19 @@ const getAllUsers = async (): Promise<userInterface[] | null> => {
   const allUsers = await Users.find({});
   return allUsers;
 };
+const updateUsers = async (
+  id: string,
+  payload: Partial<userInterface>
+): Promise<userInterface | null> => {
+  const updatedData: Partial<userInterface> = { ...payload };
+  const result = await Users.findOneAndUpdate({ _id: id }, updatedData, {
+    new: true,
+  });
+  return result;
+};
 export const UserService = {
   registerUser,
   loginUser,
-  getAllUsers
+  getAllUsers,
+  updateUsers,
 };

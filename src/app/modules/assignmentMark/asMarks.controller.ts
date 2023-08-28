@@ -19,7 +19,7 @@ const postAssignmentMarks: RequestHandler = async (
     message: "Assignment Successfully Submitted",
     data: result,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(result);
 };
 const updateAssignmentMarks: RequestHandler = async (
   req: Request,
@@ -38,7 +38,7 @@ const updateAssignmentMarks: RequestHandler = async (
     message: "Assignment Successfully Submitted",
     data: updatedQuizzes,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(updatedQuizzes);
 };
 const getAllAssignmentMarks: RequestHandler = async (
   req: Request,
@@ -52,7 +52,7 @@ const getAllAssignmentMarks: RequestHandler = async (
     message: "Assignment Successfully Loaded",
     data: result,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(result);
 };
 
 export const AssignmentMarksController = {

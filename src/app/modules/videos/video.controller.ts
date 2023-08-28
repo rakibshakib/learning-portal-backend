@@ -12,7 +12,7 @@ const deleteVideoById = async (req: Request, res: Response): Promise<void> => {
     message: "Video deleted successfully!",
     data: update,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(update);
 };
 const getVideoById = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
@@ -23,7 +23,7 @@ const getVideoById = async (req: Request, res: Response): Promise<void> => {
     message: "Single Video Loaded",
     data: result,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(result);
 };
 const getAllVideos = async (req: Request, res: Response): Promise<void> => {
   const allVideos = await VideoService.getAllVideos();
@@ -33,7 +33,7 @@ const getAllVideos = async (req: Request, res: Response): Promise<void> => {
     message: "All Video Loaded",
     data: allVideos,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(allVideos);
 };
 const createVideos = async (req: Request, res: Response) => {
   const videos = req.body;
@@ -44,7 +44,7 @@ const createVideos = async (req: Request, res: Response) => {
     message: "New Video Created",
     data: result,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(result);
 };
 const updateVideos = async (req: Request, res: Response) => {
   const id = req.params.id as string;
@@ -56,7 +56,7 @@ const updateVideos = async (req: Request, res: Response) => {
     message: "Video Updated Successfully",
     data: updatedVideos,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(updatedVideos);
 };
 export const VideoController = {
   deleteVideoById,

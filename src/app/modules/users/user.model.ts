@@ -28,7 +28,7 @@ const userSchema = new Schema<userInterface>(
     },
     isApproved: {
       type: Boolean,
-      required: true,
+      required: false,
     }
   },
   {

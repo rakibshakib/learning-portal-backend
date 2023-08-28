@@ -17,7 +17,7 @@ const createQuizzes: RequestHandler = async (
     message: "New Quizzes Created",
     data: result,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(result);
 };
 const updateQuizzes: RequestHandler = async (req: Request, res: Response) => {
   const id = req.params.id as string;
@@ -29,7 +29,7 @@ const updateQuizzes: RequestHandler = async (req: Request, res: Response) => {
     message: "Quizzes Updated Successfully",
     data: updatedQuizzes,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(updatedQuizzes);
 };
 const deleteQuizzes: RequestHandler = async (
   req: Request,
@@ -43,7 +43,7 @@ const deleteQuizzes: RequestHandler = async (
     message: "Quizzes deleted successfully!",
     data: update,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(update);
 };
 const getQuizzes: RequestHandler = async (
   req: Request,
@@ -58,7 +58,7 @@ const getQuizzes: RequestHandler = async (
       message: "All Quizzes Loaded by video",
       data: result,
     };
-    res.status(responseData.statusCode).json(responseData);
+    res.status(responseData.statusCode).json(result);
   } else {
     const result = await QuizzesService.getAllQuizzes();
     const responseData: IApiReponse<IModifyIQuizzes[] | []> = {
@@ -67,7 +67,7 @@ const getQuizzes: RequestHandler = async (
       message: "All Quizzes Loaded",
       data: result,
     };
-    res.status(responseData.statusCode).json(responseData);
+    res.status(responseData.statusCode).json(result);
   }
 };
 const getQuizzesById: RequestHandler = async (
@@ -82,7 +82,7 @@ const getQuizzesById: RequestHandler = async (
     message: "Quizzes loaded successfully!",
     data: update,
   };
-  res.status(responseData.statusCode).json(responseData);
+  res.status(responseData.statusCode).json(update);
 };
 export const QuizzesController = {
   createQuizzes,

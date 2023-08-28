@@ -6,7 +6,7 @@ export type userInterface = {
   password: string;
   role: role;
   name: string;
-  isApproved: boolean
+  isApproved?: boolean
 };
 
 export type IAuthResponse = {
@@ -26,6 +26,9 @@ export type ILoginUserResponse = {
 
 export interface IUserInterfaceWithId extends userInterface {
   _id: string;
+}
+export interface IUserWithId extends userInterface {
+  id: string;
 }
 // export type UserModel = Model<userInterface, Record<string, unknown>>;
 export type UserModel = {

@@ -4,6 +4,7 @@ import { VideoRoutes } from "../modules/videos/video.routes";
 import { AssignmentRoutes } from "../modules/assignments/assignement.route";
 import { QuizzesRoutes } from "../modules/quizzes/quizzes.routes";
 import { AssignmentMarksRoutes } from "../modules/assignmentMark/asMark.routes";
+import { QuizzMarksRoutes } from "../modules/quizMark/quizMark.routes";
 
 const router = express.Router();
 
@@ -12,5 +13,6 @@ router.use("/", VideoRoutes);
 router.use("/assignments", AssignmentRoutes);
 router.use("/quizzes", QuizzesRoutes);
 router.use("/assignmentMark", AssignmentMarksRoutes);
+router.use("/quizMark", QuizzMarksRoutes);
 
 export default router;

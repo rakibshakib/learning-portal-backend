@@ -33,11 +33,18 @@ const deleteAssignement = async (id: string): Promise<IAssignement | null> => {
   });
   return res;
 };
-const getAssignmentById = async (id: string): Promise<IAssignement | null> => {
+const getAssignmentById = async (id: string): Promise<IModifyIAssignement | {}> => {
   const res = await Assignment.findOne({
     _id: id,
-  });
-  return res;
+  }).populate("video_id");
+  const modified = {
+    id: res?.id,
+    title: res?.title,
+    video_id: (res?.video_id as IVideoId)?.id,
+    video_title: (res?.video_id as IVideoId)?.title,
+    totalMark: res?.totalMark,
+  }
+  return modified;
 };
 const getAssignementByFilter = async (
   video_id?: string
