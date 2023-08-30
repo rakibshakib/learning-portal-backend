@@ -17,7 +17,7 @@ const registerUser: RequestHandler = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  console.log("hitting for register")
+  console.log("hitting for register");
   const registerUser = req.body;
   const { user, accessToken } = (await UserService.registerUser(
     registerUser
@@ -48,7 +48,7 @@ const loginUser: RequestHandler = async (
   next: NextFunction
 ): Promise<void> => {
   const loginData = req.body;
-  console.log("hitting login", loginData)
+  console.log("hitting login", loginData);
   const result = await UserService.loginUser(loginData);
   // console.log(result);
   const responseData: IApiReponse<IAuthResponse> = {
@@ -81,8 +81,9 @@ const approvedUsers: RequestHandler = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const id = req.params.id as string;
-  const updated = req.body;
+  // const id = req.params.id as string;
+  // const updated = req.body;
+  const { id, updated } = req.body;
   const updatedQuizzes = await UserService.updateUsers(id, updated);
   const responseData: IApiReponse<userInterface> = {
     statusCode: 200,

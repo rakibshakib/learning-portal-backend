@@ -55,7 +55,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   };
 };
 const getAllUsers = async (): Promise<userInterface[] | null> => {
-  const allUsers = await Users.find({});
+  const allUsers = await Users.find({role: "student"});
   return allUsers;
 };
 const updateUsers = async (
