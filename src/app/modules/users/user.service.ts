@@ -68,9 +68,14 @@ const updateUsers = async (
   });
   return result;
 };
+const getSingleUserById = async (id: string): Promise<userInterface | null> => {
+  const singleVideo = await Users.findOne({ _id: id });
+  return singleVideo;
+};
 export const UserService = {
   registerUser,
   loginUser,
   getAllUsers,
   updateUsers,
+  getSingleUserById
 };

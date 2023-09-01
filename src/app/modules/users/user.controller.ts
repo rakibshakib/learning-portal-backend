@@ -93,9 +93,21 @@ const approvedUsers: RequestHandler = async (
   };
   res.status(responseData.statusCode).json(updatedQuizzes);
 };
+const getSingleUserById: RequestHandler =async (req: Request, res: Response): Promise<void> => {
+  const { id } = req.params;
+  const result = await UserService.getSingleUserById(id);
+  const responseData: IApiReponse<userInterface> = {
+    statusCode: 200,
+    success: true,
+    message: "Single Video Loaded",
+    data: result,
+  };
+  res.status(responseData.statusCode).json(result);
+};
 export const UserController = {
   registerUser,
   loginUser,
   getAllUsers,
   approvedUsers,
+  getSingleUserById
 };
