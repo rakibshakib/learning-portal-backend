@@ -45,14 +45,26 @@ const getAllAssignmentMarks: RequestHandler = async (
   res: Response,
   nex: NextFunction
 ) => {
-  const result = await AssignmentMarksService.getAllAssignmentMarks();
-  const responseData: IApiReponse<IResponseAssignmentsMarks[]> = {
-    statusCode: 200,
-    success: true,
-    message: "Assignment Successfully Loaded",
-    data: result,
-  };
-  res.status(responseData.statusCode).json(result);
+  const { student_id, assignment_id } = req?.query;
+  console.log(student_id, assignment_id, req?.query);
+  let result = null;
+  if (student_id && assignment_id) {
+    console.log(student_id, assignment_id, req?.query, "in condition");
+    result =
+      await AssignmentMarksService.getAllAssignmentByUserIdandAsssignmentID(
+        student_id as string,
+        assignment_id as string
+      );
+  } else {
+    result = await AssignmentMarksService.getAllAssignmentMarks();
+  }
+  // const responseData: IApiReponse<IResponseAssignmentsMarks[]> = {
+  //   statusCode: 200,
+  //   success: true,
+  //   message: "Assignment Successfully Loaded",
+  //   data: result,
+  // };
+  res.status(200).json(result);
 };
 
 export const AssignmentMarksController = {

@@ -9,7 +9,6 @@ const createQuizzes: RequestHandler = async (
   nex: NextFunction
 ) => {
   const payload = req.body;
-  console.log({ payload });
   const result = await QuizzesService.createQuizzes(payload);
   const responseData: IApiReponse<IQuizzes> = {
     statusCode: 200,

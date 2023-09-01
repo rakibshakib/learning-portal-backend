@@ -17,7 +17,6 @@ const registerUser: RequestHandler = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  console.log("hitting for register");
   const registerUser = req.body;
   const { user, accessToken } = (await UserService.registerUser(
     registerUser
@@ -48,7 +47,6 @@ const loginUser: RequestHandler = async (
   next: NextFunction
 ): Promise<void> => {
   const loginData = req.body;
-  console.log("hitting login", loginData);
   const result = await UserService.loginUser(loginData);
   // console.log(result);
   const responseData: IApiReponse<IAuthResponse> = {

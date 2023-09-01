@@ -42,6 +42,30 @@ const getAllAssignmentMarks = async (): Promise<
   );
   return modifeidAssignemntMarks;
 };
+const getAllAssignmentByUserIdandAsssignmentID = async (
+  student_id: string,
+  assignment_id: string
+): Promise<IResponseAssignmentsMarks | {}> => {
+  const allAssignmentsMarks = await AssignmentMarks.find({
+    student_id,
+    assignment_id,
+  }).populate(["student_id", "assignment_id"]);
+  const modifeidAssignemntMarks = allAssignmentsMarks.map(
+    (result: IAssignmentMarks) => ({
+      id: result?.id,
+      student_id: (result?.student_id as IuserInterfaceWithId)?.id,
+      student_name: (result?.student_id as IuserInterfaceWithId)?.name,
+      assignment_id: (result?.assignment_id as IAssignmentWithId)?.id,
+      title: (result?.assignment_id as IAssignmentWithId)?.title,
+      totalMark: result?.totalMark,
+      mark: result?.mark,
+      repo_link: result?.repo_link,
+      status: result?.status,
+      assingMarks: result?.assingMarks || "0",
+    })
+  );
+  return modifeidAssignemntMarks;
+};
 
 const updateAssignmentMarks = async (
   id: string,
@@ -66,4 +90,5 @@ export const AssignmentMarksService = {
   postAssignmentMarks,
   getAllAssignmentMarks,
   updateAssignmentMarks,
+  getAllAssignmentByUserIdandAsssignmentID,
 };
