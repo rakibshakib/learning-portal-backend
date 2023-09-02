@@ -46,10 +46,8 @@ const getAllAssignmentMarks: RequestHandler = async (
   nex: NextFunction
 ) => {
   const { student_id, assignment_id } = req?.query;
-  console.log(student_id, assignment_id, req?.query);
   let result = null;
   if (student_id && assignment_id) {
-    console.log(student_id, assignment_id, req?.query, "in condition");
     result =
       await AssignmentMarksService.getAllAssignmentByUserIdandAsssignmentID(
         student_id as string,

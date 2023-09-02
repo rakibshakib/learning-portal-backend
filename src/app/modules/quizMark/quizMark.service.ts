@@ -23,8 +23,31 @@ const getAllQuizMarks = async (): Promise<IQuizMarksResponse[] | []> => {
   }));
   return modifyResponse;
 };
+const getQuizMarksByUserIdandVidID = async (
+  student_id: string,
+  video_id: string
+): Promise<IQuizMarksResponse[] | []> => {
+  const result = await QuizMark.find({ student_id, video_id }).populate([
+    "student_id",
+    "video_id",
+  ]);
+  const modifyResponse = result.map((marks: any) => ({
+    student_id: (marks?.student_id as IUserWithId)?.id,
+    video_id: (marks?.video_id as IVideoId)?.id,
+    totalQuiz: marks?.totalQuiz,
+    totalCorrect: marks?.totalCorrect,
+    totalWrong: marks?.totalWrong,
+    totalMark: marks?.totalMark,
+    mark: marks?.mark,
+    id: marks?.id,
+    student_name: (marks?.student_id as IUserWithId)?.name,
+    video_title: (marks?.video_id as IVideoId)?.title,
+  }));
+  return modifyResponse;
+};
 
 export const QuizMarksService = {
   getAllQuizMarks,
   createQuizeMark,
+  getQuizMarksByUserIdandVidID,
 };

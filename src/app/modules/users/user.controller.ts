@@ -29,7 +29,10 @@ const registerUser: RequestHandler = async (
     restData = rest;
   }
   const data = {
-    user: restData,
+    user: {
+      ...restData,
+      id: restData?._id
+    },
     accessToken,
   };
   const responseData: IApiReponse<IAuthResponse> = {

@@ -24,13 +24,17 @@ const getAllQuizMarks: RequestHandler = async (
   res: Response,
   nex: NextFunction
 ) => {
-  const result = await QuizMarksService.getAllQuizMarks();
-  // const responseData: IApiReponse<IQuizMarks[]> = {
-  //   statusCode: 200,
-  //   success: true,
-  //   message: "All Quiz Successfully Loaded",
-  //   data: result,
-  // };
+  let result = null;
+  const { student_id, video_id } = req?.query;
+  if (student_id && video_id) {
+    result = await QuizMarksService.getQuizMarksByUserIdandVidID(
+      student_id as string,
+      video_id as string
+    );
+  } else {
+    result = await await QuizMarksService.getAllQuizMarks();
+  }
+  // const result = await QuizMarksService.getAllQuizMarks();
   res.status(200).json(result);
 };
 
